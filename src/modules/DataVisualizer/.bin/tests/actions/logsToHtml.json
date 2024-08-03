@@ -1,6 +1,6 @@
 {
   "ActionType": "VisualizeLogs",
-  "Path": ".bin/tests/logs/testLogs.log",
+  "Path": "testLogs.json",
   "OutputFormat": "HTML",
   "OutputName": "testLogs"
 }

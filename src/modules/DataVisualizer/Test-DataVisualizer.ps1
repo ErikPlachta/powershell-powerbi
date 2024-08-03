@@ -28,20 +28,19 @@ try {
     # Load the configuration file
     $config = Get-Content -Path $ConfigPath | ConvertFrom-Json
 
-    write-host $modulePath
-    write-host $config
-    write-host $config.LogPath
-    write-host $config.OutputPath
-    write-host $config.ActionPath
+    #write-host $modulePath
+    #write-host $config
+    #write-host $config.LogPath
+    #write-host $config.OutputPath
+    #write-host $config.ActionPath
 
-    $LogPath = "$($basePath)\$($config.LogPath)"
-    #$OutputPath = "$($basePath)\$($config.OutputPath)"
-    $OutputPath = Join-Path -Path $modulePath -ChildPath $config.OutputPath
+    $LogPath = "$($basePath)\.bin\tests\logs"
+    $OutputPath = "$($basePath)\$($config.OutputPath)"
 
-    write-host $LogPath
-    write-host $OutputPath
+    #write-host $LogPath
+    #write-host $OutputPath
 
-    return 
+    #return 
 
     # Execute visualize logs action
     $visualizeLogsConfig = Join-Path -Path $actionConfigsPath -ChildPath "logsToHtml.json"

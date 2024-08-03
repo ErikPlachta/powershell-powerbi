@@ -1,6 +1,6 @@
 {
   "ActionType": "VisualizeData",
-  "Path": ".bin/tests/data/testData.csv",
+  "Path": "testData.csv",
   "OutputFormat": "HTML",
   "OutputName": "testData"
 }
