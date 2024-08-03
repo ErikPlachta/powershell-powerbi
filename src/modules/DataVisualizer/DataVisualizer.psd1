@@ -45,8 +45,8 @@
 
     # Functions to export from this module
     FunctionsToExport = @(
-        'Set-VisualizedLogs'
-        'Set-VisualizedData',
+        'Set-VisualLogs'
+        'Set-Visualdata',
         'Get-Config',
         'Set-Log',
         'Start-SetupDataVisualizer',

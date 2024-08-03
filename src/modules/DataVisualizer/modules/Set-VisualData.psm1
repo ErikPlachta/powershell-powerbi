@@ -1,4 +1,4 @@
-# modules/DataVisualizer/Set-VisualizedData.psm1
+# modules/DataVisualizer/modules/Set-VisualData.psm1
 
 <#
 .SYNOPSIS
@@ -17,12 +17,14 @@
     The path where the visualization will be saved.
 
 .EXAMPLE
-    Set-VisualizedData -Path "data/example-report.csv" -OutputFormat "HTML" -OutputPath "visualizations/output/report.html"
+    Set-VisualData -Path "data/example-report.csv" -OutputFormat "HTML" -OutputPath "visualizations/output/report.html"
+
+    Set-VisualData -Path "data/example-report.json" -OutputFormat "HTML" -OutputPath "visualizations/output/report.html"
 
 .OUTPUTS
     Visualization file in specified format.
 #>
-function Set-VisualizedData {
+function Set-VisualData {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Path,
@@ -34,8 +36,15 @@ function Set-VisualizedData {
         [string]$OutputPath
     )
 
-    # Read data file
-    $data = Import-Csv -Path $Path
+    # Read data file based on extension
+    $extension = [System.IO.Path]::GetExtension($Path).ToLower()
+    if ($extension -eq ".csv") {
+        $data = Import-Csv -Path $Path
+    } elseif ($extension -eq ".json") {
+        $data = Get-Content -Path $Path | ConvertFrom-Json
+    } else {
+        throw "Unsupported file format: $extension"
+    }
 
     # Generate visualization based on format
     if ($OutputFormat -eq "HTML") {
@@ -83,4 +92,4 @@ function Set-VisualizedData {
     }
 }
 
-Export-ModuleMember -Function Set-VisualizedData
+Export-ModuleMember -Function Set-VisualData

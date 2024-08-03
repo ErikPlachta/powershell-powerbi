@@ -1,0 +1,6 @@
+{
+  "ActionType": "VisualizeData",
+  "Path": "testData_json.json",
+  "OutputFormat": "HTML",
+  "OutputName": "data_JsonToHtml"
+}

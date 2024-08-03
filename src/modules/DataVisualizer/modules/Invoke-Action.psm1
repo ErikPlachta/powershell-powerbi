@@ -22,7 +22,7 @@
 function Invoke-Action {
     param (
         [Parameter(Mandatory = $true)][string]$ActionConfig,
-        [Parameter(Mandatory = $true)][string]$LogPath,
+        [Parameter(Mandatory = $true)][string]$BasePath,
         [Parameter(Mandatory = $true)][string]$OutputPath
     )
 
@@ -30,7 +30,7 @@ function Invoke-Action {
 
 
     # Concats the path to the action file
-    $actionFilePath = Join-Path -Path $LogPath -ChildPath $action.Path
+    $actionFilePath = Join-Path -Path $BasePath -ChildPath $action.Path
     # Concats the output path with the file name and format.
     $actionOutputPath = Join-Path -Path $OutputPath -ChildPath "$($action.OutputName).$($action.OutputFormat.ToLower())"
 
@@ -38,9 +38,9 @@ function Invoke-Action {
 
     # Example action execution logic
     if ($action.ActionType -eq "VisualizeLogs") {
-        Set-VisualizedLogs -Path $actionFilePath -OutputFormat $action.OutputFormat -OutputPath $actionOutputPath
+        Set-VisualLogs -Path $actionFilePath -OutputFormat $action.OutputFormat -OutputPath $actionOutputPath
     } elseif ($action.ActionType -eq "VisualizeData") {
-        Set-VisualizedData -Path $actionFilePath -OutputFormat $action.OutputFormat -OutputPath $actionOutputPath
+        Set-VisualData -Path $actionFilePath -OutputFormat $action.OutputFormat -OutputPath $actionOutputPath
     } else {
         return @{
             success= $false;

@@ -34,6 +34,7 @@ try {
     #write-host $config.OutputPath
     #write-host $config.ActionPath
 
+    $DataPath = "$($basePath)\.bin\tests\data"
     $LogPath = "$($basePath)\.bin\tests\logs"
     $OutputPath = "$($basePath)\$($config.OutputPath)"
 
@@ -44,11 +45,15 @@ try {
 
     # Execute visualize logs action
     $visualizeLogsConfig = Join-Path -Path $actionConfigsPath -ChildPath "logsToHtml.json"
-    Invoke-Action -ActionConfig $visualizeLogsConfig -LogPath $LogPath -OutputPath $OutputPath
+    Invoke-Action -ActionConfig $visualizeLogsConfig -BasePath $LogPath -OutputPath $OutputPath
 
     # Execute visualize data action
-    $visualizeDataConfig = Join-Path -Path $actionConfigsPath -ChildPath "dataToHtml.json"
-    #Execute-Actions -ActionConfig $visualizeDataConfig
+    $visualizeDataConfig = Join-Path -Path $actionConfigsPath -ChildPath "dataToHtml_json.json"
+    Invoke-Action -ActionConfig $visualizeDataConfig -BasePath $DataPath -OutputPath $OutputPath
+
+     # Execute visualize data action
+    $visualizeDataConfig = Join-Path -Path $actionConfigsPath -ChildPath "dataToHtml_csv.json"
+    Invoke-Action -ActionConfig $visualizeDataConfig -BasePath $DataPath -OutputPath $OutputPath
 
     Write-Host "DataVisualizer module tests completed."
 } finally {

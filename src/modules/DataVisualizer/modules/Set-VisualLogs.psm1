@@ -1,4 +1,4 @@
-# modules/DataVisualizer/Set-VisualizeLogs.psm1
+# modules/DataVisualizer/Set-VisualLogs.psm1
 
 <#
 .SYNOPSIS
@@ -17,12 +17,12 @@
     The path where the visualization will be saved.
 
 .EXAMPLE
-    Visualize-Logs -path "logs/logfile.log" -OutputFormat "HTML" -OutputPath "visualizations/output/logs.html"
+    Set-VisualLogs -path "logs/logfile.log" -OutputFormat "HTML" -OutputPath "visualizations/output/logs.html"
 
 .OUTPUTS
     Visualization file in specified format.
 #>
-function Set-VisualizedLogs {
+function Set-VisualLogs {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Path,
@@ -77,4 +77,4 @@ function Set-VisualizedLogs {
     }
 }
 
-Export-ModuleMember -Function Set-VisualizedLogs
+Export-ModuleMember -Function Set-VisualLogs

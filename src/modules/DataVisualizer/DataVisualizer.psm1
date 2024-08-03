@@ -10,16 +10,16 @@
 
 # Import all submodules
 $submodulesPath = Join-Path -Path $PSScriptRoot -ChildPath "modules"
-Import-Module (Join-Path -Path $submodulesPath -ChildPath "Set-VisualizedLogs.psm1")
-Import-Module (Join-Path -Path $submodulesPath -ChildPath "Set-VisualizedData.psm1")
+Import-Module (Join-Path -Path $submodulesPath -ChildPath "Set-VisualLogs.psm1")
+Import-Module (Join-Path -Path $submodulesPath -ChildPath "Set-VisualData.psm1")
 Import-Module (Join-Path -Path $submodulesPath -ChildPath "Get-Config.psm1")
 Import-Module (Join-Path -Path $submodulesPath -ChildPath "Set-Log.psm1")
 Import-Module (Join-Path -Path $submodulesPath -ChildPath "Start-SetupDataVisualizer.psm1")
 Import-Module (Join-Path -Path $submodulesPath -ChildPath "Invoke-Action.psm1")
 
 # Define the exported functions
-Export-ModuleMember -Function Set-VisualizedLogs
-Export-ModuleMember -Function Set-VisualizeData
+Export-ModuleMember -Function Set-VisualLogs
+Export-ModuleMember -Function Set-VisualData
 Export-ModuleMember -Function Get-Config
 Export-ModuleMember -Function Set-Log
 Export-ModuleMember -Function Start-SetupDataVisualizer

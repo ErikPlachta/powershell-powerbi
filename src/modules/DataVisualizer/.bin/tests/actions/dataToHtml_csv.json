@@ -1,6 +1,6 @@
 {
   "ActionType": "VisualizeData",
-  "Path": "testData.csv",
+  "Path": "testData_csv.csv",
   "OutputFormat": "HTML",
-  "OutputName": "testData"
+  "OutputName": "data_CsvToHtml"
 }
