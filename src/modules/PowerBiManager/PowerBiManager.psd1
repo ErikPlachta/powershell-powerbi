@@ -2,31 +2,31 @@
 
 @{
     # Script module or binary module file associated with this manifest.
-    RootModule = ''
+    RootModule = 'main.ps1'
 
     # Version number of this module.
-    ModuleVersion = '1.0.0'
+    ModuleVersion = '0.0.1'
 
     # ID used to uniquely identify this module
     GUID = 'd4b0eac4-9835-4a4f-b8e3-112b647fa5f2'
 
     # Author of this module
-    Author = 'Your Name'
+    Author = 'Erik Plachta'
 
     # Company or vendor of this module
-    CompanyName = 'Your Company'
+    CompanyName = $false
 
     # Copyright statement for this module
-    Copyright = '(c) 2023 Your Company. All rights reserved.'
+    Copyright = '(c) 2024 Erik Plachta. All rights reserved.'
 
-    # Description of the functionality provided by this module
-    Description = 'This module contains functions for managing and executing Power BI reports.'
+   # Description of the functionality provided by this module
+    Description = 'This module contains functions for managing and executing Power BI reports and datasets.'
 
     # Minimum version of the Windows PowerShell engine required by this module
     PowerShellVersion = '5.1'
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules = @()
+    RequiredModules = @('MicrosoftPowerBIMgmt')
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @()
@@ -41,23 +41,19 @@
     FormatsToProcess = @()
 
     # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-    NestedModules = @(
-        'ExecuteReport.psm1',
-        'GetReportMeta.psm1',
-        'ProcessReportResults.psm1',
-        'ConfigReader.psm1',
-        'Logger.psm1',
-        'Setup.psm1'
-    )
+    NestedModules = @()
 
     # Functions to export from this module
     FunctionsToExport = @(
         'Execute-Report',
         'Get-ReportMetadata',
         'Process-ReportResults',
-        'Get-Config',
+        'Get-Configs',
         'Write-Log',
-        'Initialize-PowerBiManager'
+        'Initialize-PowerBiManager',
+        'Execute-DaxQuery',
+        'Test-Dependencies',
+        'Execute-Actions'
     )
 
     # Cmdlets to export from this module
@@ -85,7 +81,7 @@
     Tags = @()
 
     # External module dependencies
-    ExternalModuleDependencies = @()
+    ExternalModuleDependencies = @('MicrosoftPowerBIMgmt')
 
     # End of module manifest definition
 }

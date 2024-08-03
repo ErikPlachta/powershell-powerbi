@@ -2,22 +2,22 @@
 
 @{
     # Script module or binary module file associated with this manifest.
-    RootModule = ''
+    RootModule = 'main.ps1'
 
     # Version number of this module.
-    ModuleVersion = '1.0.0'
+    ModuleVersion = '0.0.1'
 
     # ID used to uniquely identify this module
     GUID = 'b85b7a8c-92f0-4c1a-9c28-fbd9c307b6c0'
 
     # Author of this module
-    Author = 'Your Name'
+    Author = 'Erik Plachta'
 
     # Company or vendor of this module
-    CompanyName = 'Your Company'
+    CompanyName = $false
 
     # Copyright statement for this module
-    Copyright = '(c) 2023 Your Company. All rights reserved.'
+    Copyright = '(c) 2024 Erik Plachta. All rights reserved.'
 
     # Description of the functionality provided by this module
     Description = 'This module contains functions for visualizing logs and report data from PowerBiManager.'
@@ -41,13 +41,7 @@
     FormatsToProcess = @()
 
     # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-    NestedModules = @(
-        'VisualizeLogs.psm1',
-        'VisualizeData.psm1',
-        'ConfigReader.psm1',
-        'Logger.psm1',
-        'Setup.psm1'
-    )
+    NestedModules = @()
 
     # Functions to export from this module
     FunctionsToExport = @(
@@ -55,7 +49,8 @@
         'Visualize-Data',
         'Get-Config',
         'Write-Log',
-        'Initialize-DataVisualizer'
+        'Initialize-DataVisualizer',
+        'Execute-Actions'
     )
 
     # Cmdlets to export from this module

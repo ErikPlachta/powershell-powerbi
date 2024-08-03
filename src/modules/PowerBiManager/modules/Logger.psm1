@@ -1,4 +1,4 @@
-# modules/DataVisualizer/Logger.psm1
+# modules/PowerBiManager/Logger.psm1
 
 <#
 .SYNOPSIS

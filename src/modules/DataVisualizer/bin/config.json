@@ -1,0 +1,5 @@
+{
+  "actionDirectory": ".actions",
+  "logDirectory": ".logs",
+  "outputDirectory": ".output/visual"
+}
