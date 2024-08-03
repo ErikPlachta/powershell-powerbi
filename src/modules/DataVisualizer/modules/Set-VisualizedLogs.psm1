@@ -1,4 +1,4 @@
-# modules/DataVisualizer/VisualizeLogs.psm1
+# modules/DataVisualizer/Set-VisualizeLogs.psm1
 
 <#
 .SYNOPSIS
@@ -7,7 +7,7 @@
 .DESCRIPTION
     This module provides functions to read and visualize log files, creating HTML or Excel reports.
 
-.PARAMETER LogFilePath
+.PARAMETER path
     The path to the log file.
 
 .PARAMETER OutputFormat
@@ -17,15 +17,15 @@
     The path where the visualization will be saved.
 
 .EXAMPLE
-    Visualize-Logs -LogFilePath "logs/logfile.log" -OutputFormat "HTML" -OutputPath "visualizations/output/logs.html"
+    Visualize-Logs -path "logs/logfile.log" -OutputFormat "HTML" -OutputPath "visualizations/output/logs.html"
 
 .OUTPUTS
     Visualization file in specified format.
 #>
-function Visualize-Logs {
+function Set-VisualizedLogs {
     param (
         [Parameter(Mandatory = $true)]
-        [string]$LogFilePath,
+        [string]$Path,
 
         [Parameter(Mandatory = $true)]
         [string]$OutputFormat,
@@ -35,7 +35,7 @@ function Visualize-Logs {
     )
 
     # Read log file
-    $logs = Get-Content -Path $LogFilePath | ForEach-Object {
+    $logs = Get-Content -Path $Path | ForEach-Object {
         $fields = $_ -split ' - '
         [pscustomobject]@{
             Timestamp = $fields[0]
@@ -77,4 +77,4 @@ function Visualize-Logs {
     }
 }
 
-Export-ModuleMember -Function Visualize-Logs
+Export-ModuleMember -Function Set-VisualizedLogs

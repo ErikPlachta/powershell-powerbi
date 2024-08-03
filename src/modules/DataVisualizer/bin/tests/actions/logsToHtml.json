@@ -1,6 +1,0 @@
-{
-  "ActionType": "VisualizeLogs",
-  "path": ".bin/tests/logs/testLogs.log",
-  "outputFormat": "HTML",
-  "outputName": "testLogs"
-}

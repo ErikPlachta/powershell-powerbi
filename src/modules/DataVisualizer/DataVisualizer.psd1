@@ -2,7 +2,7 @@
 
 @{
     # Script module or binary module file associated with this manifest.
-    RootModule = 'main.ps1'
+    RootModule = 'DataVisualizer.psm1'
 
     # Version number of this module.
     ModuleVersion = '0.0.1'
@@ -45,12 +45,12 @@
 
     # Functions to export from this module
     FunctionsToExport = @(
-        'Visualize-Logs',
-        'Visualize-Data',
+        'Set-VisualizedLogs'
+        'Set-VisualizedData',
         'Get-Config',
-        'Write-Log',
-        'Initialize-DataVisualizer',
-        'Execute-Actions'
+        'Set-Log',
+        'Start-SetupDataVisualizer',
+        'Invoke-Action'
     )
 
     # Cmdlets to export from this module
@@ -73,12 +73,6 @@
 
     # Metadata used to uniquely identify this module
     HelpInfoURI = ''
-
-    # Tags to help search for this module
-    Tags = @()
-
-    # External module dependencies
-    ExternalModuleDependencies = @()
 
     # End of module manifest definition
 }

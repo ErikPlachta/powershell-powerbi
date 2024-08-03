@@ -13,7 +13,7 @@
 .EXAMPLE
     Initialize-DataVisualizer -BasePath $PSScriptRoot
 #>
-function Initialize-DataVisualizer {
+function Start-SetupDataVisualizer {
     param (
         [Parameter(Mandatory = $true)]
         [string]$BasePath
@@ -21,10 +21,9 @@ function Initialize-DataVisualizer {
 
     # Define required directories
     $requiredDirectories = @(
-        "data",
-        "logs",
-        "visualizations/templates",
-        "visualizations/output"
+        ".output",
+        ".logs",
+        ".bin/templates"
     )
 
     # Create directories
@@ -36,7 +35,7 @@ function Initialize-DataVisualizer {
     }
 
     # Import default templates
-    $templatePath = Join-Path -Path $BasePath -ChildPath "visualizations/templates"
+    $templatePath = Join-Path -Path $BasePath -ChildPath ".bin/templates"
     $defaultTemplate = @"
 <html>
 <head>
@@ -53,4 +52,4 @@ function Initialize-DataVisualizer {
     }
 }
 
-Export-ModuleMember -Function Initialize-DataVisualizer
+Export-ModuleMember -Function Start-SetupDataVisualizer

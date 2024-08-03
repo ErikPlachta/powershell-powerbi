@@ -1,4 +1,4 @@
-# modules/DataVisualizer/Logger.psm1
+# modules/DataVisualizer/Set-Log.psm1
 
 <#
 .SYNOPSIS
@@ -14,9 +14,9 @@
     The message to log.
 
 .EXAMPLE
-    Write-Log -Path "logs/logfile.log" -Message "This is a log message."
+    Set-Log -Path "logs/logfile.log" -Message "This is a log message."
 #>
-function Write-Log {
+function Set-Log {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Path,
@@ -30,4 +30,4 @@ function Write-Log {
     Add-Content -Path $Path -Value $logMessage
 }
 
-Export-ModuleMember -Function Write-Log
+Export-ModuleMember -Function Set-Log

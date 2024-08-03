@@ -1,4 +1,4 @@
-# modules/DataVisualizer/VisualizeData.psm1
+# modules/DataVisualizer/Set-VisualizedData.psm1
 
 <#
 .SYNOPSIS
@@ -7,7 +7,7 @@
 .DESCRIPTION
     This module provides functions to read and visualize data from exported reports, creating HTML or Excel reports.
 
-.PARAMETER DataFilePath
+.PARAMETER Path
     The path to the data file.
 
 .PARAMETER OutputFormat
@@ -17,15 +17,15 @@
     The path where the visualization will be saved.
 
 .EXAMPLE
-    Visualize-Data -DataFilePath "data/example-report.csv" -OutputFormat "HTML" -OutputPath "visualizations/output/report.html"
+    Set-VisualizedData -Path "data/example-report.csv" -OutputFormat "HTML" -OutputPath "visualizations/output/report.html"
 
 .OUTPUTS
     Visualization file in specified format.
 #>
-function Visualize-Data {
+function Set-VisualizedData {
     param (
         [Parameter(Mandatory = $true)]
-        [string]$DataFilePath,
+        [string]$Path,
 
         [Parameter(Mandatory = $true)]
         [string]$OutputFormat,
@@ -35,7 +35,7 @@ function Visualize-Data {
     )
 
     # Read data file
-    $data = Import-Csv -Path $DataFilePath
+    $data = Import-Csv -Path $Path
 
     # Generate visualization based on format
     if ($OutputFormat -eq "HTML") {
@@ -83,4 +83,4 @@ function Visualize-Data {
     }
 }
 
-Export-ModuleMember -Function Visualize-Data
+Export-ModuleMember -Function Set-VisualizedData
