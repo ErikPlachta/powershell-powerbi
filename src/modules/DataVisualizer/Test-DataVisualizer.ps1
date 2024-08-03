@@ -52,7 +52,7 @@ try {
     Invoke-Action -ActionConfig $visualizeDataConfig -BasePath $DataPath -OutputPath $OutputPath
 
      # Execute visualize data action
-    $visualizeDataConfig = Join-Path -Path $actionConfigsPath -ChildPath "dataToHtml_csv.json"
+    $visualizeDataConfig = Join-Path -Path $actionConfigsPath -ChildPath "dataToHtml_json.json"
     Invoke-Action -ActionConfig $visualizeDataConfig -BasePath $DataPath -OutputPath $OutputPath
 
     Write-Host "DataVisualizer module tests completed."

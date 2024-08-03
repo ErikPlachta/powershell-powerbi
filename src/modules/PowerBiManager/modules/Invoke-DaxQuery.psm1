@@ -1,4 +1,4 @@
-# modules/PowerBiManager/ExecuteDax.psm1
+# modules/PowerBiManager/Invoke-DaxQuery.psm1
 
 <#
 .SYNOPSIS
@@ -22,7 +22,7 @@
 .OUTPUTS
     JSON object containing the query result.
 #>
-function Execute-DaxQuery {
+function Invoke-DaxQuery {
     param (
         [Parameter(Mandatory = $true)]
         [string]$WorkspaceId,
@@ -53,4 +53,4 @@ function Execute-DaxQuery {
     return $response | ConvertFrom-Json
 }
 
-Export-ModuleMember -Function Execute-DaxQuery
+Export-ModuleMember -Function Invoke-DaxQuery

@@ -2,7 +2,7 @@
 
 @{
     # Script module or binary module file associated with this manifest.
-    RootModule = 'main.ps1'
+    RootModule = 'PowerBiManager.psm1'
 
     # Version number of this module.
     ModuleVersion = '0.0.1'
@@ -26,7 +26,8 @@
     PowerShellVersion = '5.1'
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules = @('MicrosoftPowerBIMgmt')
+    #RequiredModules = @('MicrosoftPowerBIMgmt')
+    RequiredModules = @()
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @()
@@ -45,15 +46,18 @@
 
     # Functions to export from this module
     FunctionsToExport = @(
-        'Execute-Report',
-        'Get-ReportMetadata',
-        'Process-ReportResults',
-        'Get-Configs',
-        'Write-Log',
-        'Initialize-PowerBiManager',
-        'Execute-DaxQuery',
-        'Test-Dependencies',
-        'Execute-Actions'
+        'Start-SetupPowerBiManager',
+        'Get-Config',
+        'Get-Dependencies',
+        'Set-Log',
+        'Invoke-Action',
+        'Invoke-DaxQuery',
+        'Invoke-ReportQuery',
+        'Get-ReportMeta',
+        'Set-ReportResults',
+        "Invoke-PowerBiLogin",
+        "Get-PowerBiAuthState",
+        "Invoke-PowerBiLogout"
     )
 
     # Cmdlets to export from this module
@@ -76,12 +80,6 @@
 
     # Metadata used to uniquely identify this module
     HelpInfoURI = ''
-
-    # Tags to help search for this module
-    Tags = @()
-
-    # External module dependencies
-    ExternalModuleDependencies = @('MicrosoftPowerBIMgmt')
 
     # End of module manifest definition
 }

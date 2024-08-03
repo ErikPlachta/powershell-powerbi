@@ -1,4 +1,4 @@
-# modules/PowerBiManager/ExecuteReport.psm1
+# modules/PowerBiManager/Invoke-ReportQuery.psm1
 
 <#
 .SYNOPSIS
@@ -17,20 +17,28 @@
     A hashtable of query parameters to be passed to the report. Default is an empty hashtable.
 
 .EXAMPLE
-    Execute-Report -WorkspaceId "workspace-id" -ReportId "report-id" -QueryParameters @{ Parameter1 = "Value1" }
+    Invoke-ReportQuery -WorkspaceId "workspace-id" -ReportId "report-id" -QueryParameters @{ Parameter1 = "Value1" }
 
 .OUTPUTS
     JSON object containing the execution result.
 #>
-function Execute-Report {
+function Invoke-ReportQuery {
     param (
         [string]$WorkspaceId,
         [string]$ReportId,
-        [hashtable]$QueryParameters = @{}
+        [PSCustomObject]$QueryParameters = $null
     )
 
+    # Convert PSCustomObject to Hashtable
+    $hashtable = @{}
+    if ($null -ne $QueryParameters) {
+        foreach ($key in $QueryParameters.PSObject.Properties.Name) {
+            $hashtable[$key] = $QueryParameters.$key
+        }
+    }
+
     # Convert query parameters to JSON
-    $queryParametersJson = $QueryParameters | ConvertTo-Json
+    $queryParametersJson = $hashtable | ConvertTo-Json
 
     # Execute the report query with parameters
     $response = Invoke-PowerBIRestMethod -Url "groups/$WorkspaceId/reports/$ReportId/executeQueries" -Method Post -Body $queryParametersJson -ContentType "application/json"
@@ -39,4 +47,4 @@ function Execute-Report {
     return $response | ConvertFrom-Json
 }
 
-Export-ModuleMember -Function Execute-Report
+Export-ModuleMember -Function Invoke-ReportQuery

@@ -1,4 +1,4 @@
-# modules/PowerBiManager/Setup.psm1
+# modules/PowerBiManager/Start-PowerBiManager.psm1
 
 <#
 .SYNOPSIS
@@ -13,16 +13,25 @@
 .EXAMPLE
     Initialize-PowerBiManager -BasePath $PSScriptRoot
 #>
-function Initialize-PowerBiManager {
+function Start-SetupPowerBiManager {
     param (
         [Parameter(Mandatory = $true)]
         [string]$BasePath
     )
 
+    # Check dependencies
+    $dependencies = @('MicrosoftPowerBIMgmt')
+    if (-not (Get-Dependencies -Dependencies $dependencies)) {
+        throw "Required dependencies are not installed."
+    }
+
+
     # Define required directories
     $requiredDirectories = @(
-        "actions",
-        "output"
+        ".actions",
+        ".output",
+        ".logs"
+        
     )
 
     # Create directories
@@ -37,12 +46,12 @@ function Initialize-PowerBiManager {
     $configPath = Join-Path -Path $BasePath -ChildPath "config.json"
     if (-not (Test-Path -Path $configPath)) {
         $defaultConfig = @{
-            logFilePath = "logs/logfile.log"
-            configDirectory = "actions"
-            outputDirectory = "output"
+            LogPath = ".logs"
+            actionPath = ".actions"
+            OutputPath = ".output"
         } | ConvertTo-Json -Depth 3
         Set-Content -Path $configPath -Value $defaultConfig
     }
 }
 
-Export-ModuleMember -Function Initialize-PowerBiManager
+Export-ModuleMember -Function Start-SetupPowerBiManager

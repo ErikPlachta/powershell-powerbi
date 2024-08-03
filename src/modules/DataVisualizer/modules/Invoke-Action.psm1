@@ -26,7 +26,7 @@ function Invoke-Action {
         [Parameter(Mandatory = $true)][string]$OutputPath
     )
 
-    $action = Get-Config -ConfigFilePath $ActionConfig
+    $action = Get-Config -Path $ActionConfig
 
 
     # Concats the path to the action file

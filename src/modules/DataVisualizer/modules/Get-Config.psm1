@@ -7,11 +7,11 @@
 .DESCRIPTION
     This module provides functions to read configuration files specifying default settings for visualizations.
 
-.PARAMETER ConfigFilePath
+.PARAMETER Path
     The path to the configuration file.
 
 .EXAMPLE
-    $config = Get-Config -ConfigFilePath "config.json"
+    $config = Get-Config -Path "config.json"
 
 .OUTPUTS
     PSCustomObject representing the configuration settings.
@@ -19,10 +19,10 @@
 function Get-Config {
     param (
         [Parameter(Mandatory = $true)]
-        [string]$ConfigFilePath
+        [string]$Path
     )
 
-    $configContent = Get-Content -Path $ConfigFilePath -Raw | ConvertFrom-Json
+    $configContent = Get-Content -Path $Path -Raw | ConvertFrom-Json
     return $configContent
 }
 

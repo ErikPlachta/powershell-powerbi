@@ -16,7 +16,7 @@
 .OUTPUTS
     PSCustomObject containing the processed result details.
 #>
-function Process-ReportResults {
+function Get-ReportResults {
     param (
         [Parameter(Mandatory = $true)]
         [pscustomobject]$ExecutionResult
@@ -40,4 +40,4 @@ function Process-ReportResults {
     return $result
 }
 
-Export-ModuleMember -Function Process-ReportResults
+Export-ModuleMember -Function Get-ReportResults

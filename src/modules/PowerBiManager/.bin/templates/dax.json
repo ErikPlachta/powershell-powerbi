@@ -1,0 +1,6 @@
+{
+  "ActionType": "InvokeDaxQuery",
+  "WorkspaceId": "workspace-id",
+  "DatasetId": "dataset-id",
+  "DaxQuery": "EVALUATE SUMMARIZECOLUMNS(...)"
+}

@@ -1,0 +1,20 @@
+{
+  "ActionType": "InvokeReportsQuery",
+  "WorkspaceId": "workspace-id",
+  "Reports": [
+    {
+      "ReportId": "report-id-1",
+      "QueryParameters": {
+        "param1": "value1",
+        "param2": "value2"
+      }
+    },
+    {
+      "ReportId": "report-id-2",
+      "QueryParameters": {
+        "param3": "value3",
+        "param4": "value4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ActionType": "InvokeReportQuery",
+  "WorkspaceId": "workspace-id",
+  "ReportId": "report-id",
+  "QueryParameters": {
+    "param1": "value1",
+    "param2": "value2"
+  },
+  "OutputFormat": "JSON",
+  "OutputName": "TEST_daxQueryOutput"
+}

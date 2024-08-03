@@ -1,55 +1,42 @@
-# modules/DataVisualizer/Setup.psm1
+# modules/PowerBiManager/modules/Start-SetupPowerBiManager.psm1
 
 <#
 .SYNOPSIS
-    Provides setup functionality for DataVisualizer.
+    Sets up the necessary directory structure for the PowerBiManager module.
 
 .DESCRIPTION
-    This module provides functions to create necessary folder structures, import templates, and handle other setup requirements.
+    This function creates the necessary directories for the PowerBiManager module to operate correctly.
 
 .PARAMETER BasePath
-    The base path where the setup will be performed.
+    The base path where the directories should be created.
 
 .EXAMPLE
-    Initialize-DataVisualizer -BasePath $PSScriptRoot
+    Start-Setup -BasePath "path/to/base"
 #>
-function Start-SetupDataVisualizer {
+function Start-SetupPowerBiManager {
     param (
         [Parameter(Mandatory = $true)]
         [string]$BasePath
     )
 
-    # Define required directories
-    $requiredDirectories = @(
-        ".output",
-        ".logs",
-        ".bin/templates"
+    $directories = @(
+        "$BasePath/.bin",
+        "$BasePath/.actions",
+        "$BasePath/.output"
+        #"$BasePath/.bin/templates",
+        #"$BasePath/.bin/tests",
+        #"$BasePath/.bin/tests/actions",
+        #"$BasePath/.bin/tests/data",
+        #"$BasePath/.bin/tests/logs"
     )
 
-    # Create directories
-    foreach ($dir in $requiredDirectories) {
-        $fullPath = Join-Path -Path $BasePath -ChildPath $dir
-        if (-not (Test-Path -Path $fullPath)) {
-            New-Item -Path $fullPath -ItemType Directory -Force
+    foreach ($dir in $directories) {
+        if (-not (Test-Path $dir)) {
+            New-Item -ItemType Directory -Path $dir -Force
         }
     }
 
-    # Import default templates
-    $templatePath = Join-Path -Path $BasePath -ChildPath ".bin/templates"
-    $defaultTemplate = @"
-<html>
-<head>
-    <title>Default Template</title>
-</head>
-<body>
-    <h1>Data Visualization</h1>
-</body>
-</html>
-"@
-    $templateFile = Join-Path -Path $templatePath -ChildPath "default.html"
-    if (-not (Test-Path -Path $templateFile)) {
-        Set-Content -Path $templateFile -Value $defaultTemplate
-    }
+    Write-Host "Setup completed. All necessary directories have been created."
 }
 
-Export-ModuleMember -Function Start-SetupDataVisualizer
+Export-ModuleMember -Function Start-SetupPowerBiManager

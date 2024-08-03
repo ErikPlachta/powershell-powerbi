@@ -1,4 +1,4 @@
-# modules/PowerBiManager/modules/CheckDependencies.psm1
+# modules/PowerBiManager/modules/Get-Dependencies.psm1
 
 <#
 .SYNOPSIS
@@ -17,7 +17,7 @@
 .OUTPUTS
     Boolean indicating if all dependencies are installed.
 #>
-function Test-Dependencies {
+function Get-Dependencies {
     param (
         [Parameter(Mandatory = $true)]
         [string[]]$Dependencies
@@ -55,4 +55,4 @@ function Test-Dependencies {
     return $allInstalled
 }
 
-Export-ModuleMember -Function Test-Dependencies
+Export-ModuleMember -Function Get-Dependencies
